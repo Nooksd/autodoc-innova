@@ -105,7 +105,7 @@ export async function updateUser(req, res) {
 }
 
 export async function uploadAvatar(req, res) {
-  const { user } = req;
+  const user = req.user.user;
   if (!user)
     return res.status(401).json({
       status: false,
@@ -114,13 +114,13 @@ export async function uploadAvatar(req, res) {
 
   try {
     const result = await cloudinary.uploader.upload(req.file.path, {
-      public_id: `${user.id}_avatar`,
+      public_id: `${user._id}_avatar`,
       folder: "avatar",
       width: 500,
       height: 500,
     });
 
-    await User.findByIdAndUpdate(user.id, { avatar: result.url });
+    await User.findByIdAndUpdate(user._id, { avatar: result.url });
 
     res.status(201).json({
       status: true,
