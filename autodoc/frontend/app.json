@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "frontend",
+    "slug": "frontend",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/images/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./src/assets/images/logo_small.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#010336",
+      "plugins": [
+        [
+          "expo-image-picker",
+          {
+            "photosPermission": "The app accesses your photos to let you share them with your friends."
+          }
+        ]
+      ]
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "infoPlist": {
+        "NSCameraUsageDescription": "Permissão para acessar a câmera",
+        "NSPhotoLibraryUsageDescription": "Permissão para acessar a biblioteca de fotos"
+      },
+      "supportsTablet": true
+    },
+    "android": {
+      "permissions": ["CAMERA", "CAMERA_ROLL", "WRITE_EXTERNAL_STORAGE"],
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/images/icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./src/assets/images/logo.png"
+    },
+    "packegerOpts": {
+      "config": "metro.config.js",
+      "sourceExists": ["js", "jsx", "ts", "tsx", "svg"]
+    }
+  }
+}
